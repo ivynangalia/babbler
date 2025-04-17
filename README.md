@@ -1,2 +1,2 @@
 # babbler
-almost as smart as chatGPT
+basically chatGPT
