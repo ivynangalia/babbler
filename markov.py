@@ -64,6 +64,18 @@ def input_message():
             decision = input("Invalid input. Would you like the babbler to keep babbling? (Y/N) ")
         extra = (decision == "Y")
     print(generate_message(chain, extra, count))
-    
+
+def regenerate(train: str, output_len: int):
+    chain = build_chain(train)
+    output = generate_message(chain, True, output_len)
+    outputs = []
+    cycles = 1
+    while output not in outputs:
+        outputs.append(output)
+        output = generate_message(chain, True, output_len)
+        cycles += 1
+    return cycles
+
 if __name__ == "__main__":
-    input_message()
+    #input_message()
+    print(regenerate("and this and that and this and that", 10))
